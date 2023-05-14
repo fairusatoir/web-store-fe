@@ -4,6 +4,8 @@
     <Hero />
     <ProductBanner />
     <Gallery />
+    <Partner />
+    <Footer />
   </div>
 </template>
 
@@ -14,6 +16,8 @@ import Header from "@/components/Header.vue";
 import Hero from "@/components/Hero.vue";
 import ProductBanner from "@/components/ProductBanner.vue";
 import Gallery from "@/components/Gallery.vue";
+import Partner from "@/components/Partner.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "HomeView",
@@ -22,6 +26,8 @@ export default {
     Hero,
     ProductBanner,
     Gallery,
+    Partner,
+    Footer,
   },
 };
 </script>
