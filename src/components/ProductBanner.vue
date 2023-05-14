@@ -9,7 +9,7 @@
             :breakpoints="breakpoints"
             :dots="false"
             :nav="false"
-            :autoplay="false"
+            :autoplay="4000"
             :wrap-around="true"
           >
             <slide
@@ -36,6 +36,11 @@
                 </div>
               </div>
             </slide>
+            <template #addons>
+              <div class="mt-4">
+                <Pagination />
+              </div>
+            </template>
           </carousel>
         </div>
       </div>
@@ -45,12 +50,13 @@
 
 <script>
 import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide } from "vue3-carousel";
+import { Carousel, Slide, Pagination } from "vue3-carousel";
 export default {
   name: "ProductBanner",
   components: {
     Carousel,
     Slide,
+    Pagination,
   },
   data() {
     return {
@@ -67,7 +73,11 @@ export default {
       // breakpoints are mobile first
       // any settings not specified will fallback to the carousel settings
       breakpoints: {
-        1200: {
+        768: {
+          itemsToShow: 2,
+          snapAlign: "start",
+        },
+        1440: {
           itemsToShow: 3,
           snapAlign: "start",
         },
@@ -78,7 +88,7 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
   .product-wrapper .pi-pic img {
     height: 650px;
   }

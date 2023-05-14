@@ -4,14 +4,13 @@
     <carousel
       class="hero-items"
       :items="1"
-      :nav="false"
       :autoplay="5000"
       :wrap-around="true"
     >
       <slide v-for="slide in slides" :key="slide">
         <div
           class="single-hero-items set-bg"
-          :style="{ backgroundImage: `url('${slide.image}')` }"
+          :style="{ backgroundImage: `url('${slide}')` }"
         >
           <div class="container">
             <div class="row content-text-items">
@@ -30,7 +29,6 @@
       </slide>
       <template #addons>
         <navigation />
-        <pagination />
       </template>
     </carousel>
   </section>
@@ -38,48 +36,19 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import { Carousel, Slide, Navigation } from "vue3-carousel";
 export default {
   // eslint-disable-next-line
   name: "Hero",
   components: {
     Carousel,
     Slide,
-    Pagination,
     Navigation,
   },
-  setup() {
-    const slides = ref([
-      {
-        image: "/img/hero-1.jpg",
-      },
-      {
-        image: "/img/hero-2.jpg",
-      },
-      {
-        image: "/img/hero-1.jpg",
-      },
-      {
-        image: "/img/hero-2.jpg",
-      },
-      {
-        image: "/img/hero-1.jpg",
-      },
-      {
-        image: "/img/hero-2.jpg",
-      },
-      {
-        image: "/img/hero-1.jpg",
-      },
-      {
-        image: "/img/hero-2.jpg",
-      },
-    ]);
-
+  data() {
     return {
-      slides,
+      slides: ["/img/hero-1.jpg", "/img/hero-2.jpg"],
     };
   },
 };
@@ -96,7 +65,7 @@ export default {
 
 .set-bg {
   width: 100%;
-  height: 550px;
+  height: 750px;
 }
 
 @media (max-width: 768px) {
