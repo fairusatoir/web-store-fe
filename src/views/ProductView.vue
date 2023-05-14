@@ -31,10 +31,9 @@
                     class="product-thumbs-track ps-slider"
                     v-bind="settings"
                     :breakpoints="breakpoints"
-                    :dots="false"
-                    :nav="false"
                     :autoplay="5000"
-                    :wrap-around="true"
+                    :wrap-around="false"
+                    v-model="activeIndex"
                   >
                     <slide
                       class="pt thumbs-items"
@@ -47,6 +46,7 @@
                     </slide>
                     <template #addons>
                       <Navigation />
+                      <Pagination />
                     </template>
                   </carousel>
                 </div>
@@ -101,7 +101,7 @@
 
 <script>
 import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide, Navigation } from "vue3-carousel";
+import { Carousel, Slide, Navigation, Pagination } from "vue3-carousel";
 // @ is an alias to /src
 
 import Header from "@/components/Header.vue";
@@ -115,6 +115,7 @@ export default {
     Carousel,
     Slide,
     Navigation,
+    Pagination,
   },
   data() {
     return {
@@ -128,7 +129,7 @@ export default {
       activeIndex: 0,
       settings: {
         itemsToShow: 3,
-        snapAlign: "start",
+        snapAlign: "center",
       },
     };
   },
@@ -142,9 +143,6 @@ export default {
 </script>
 
 <style scoped>
-.thumbs-items {
-  margin-right: 10px;
-}
 .thumbs-items img {
   display: block;
   width: auto;
