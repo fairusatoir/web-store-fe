@@ -14,12 +14,12 @@
           >
             <slide
               class="product-item"
-              v-for="itemProduct in products"
-              :key="itemProduct"
+              v-for="imgProduct in products"
+              :key="imgProduct"
             >
               <div class="product-wrapper">
                 <div class="pi-pic">
-                  <img :src="itemProduct.image" height="750" alt="" />
+                  <img :src="imgProduct" alt="" />
                   <ul>
                     <li class="w-icon active">
                       <a href="#"><i class="icon_bag_alt"></i></a>
@@ -44,7 +44,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
 export default {
@@ -53,61 +52,35 @@ export default {
     Carousel,
     Slide,
   },
-  data: () => ({
-    settings: {
-      itemsToShow: 1,
-      snapAlign: "center",
-    },
-    // breakpoints are mobile first
-    // any settings not specified will fallback to the carousel settings
-    breakpoints: {
-      1200: {
-        itemsToShow: 3,
+  data() {
+    return {
+      products: [
+        "img/products/women-1.jpg",
+        "img/products/women-2.jpg",
+        "img/products/women-3.jpg",
+        "img/products/women-4.jpg",
+      ],
+      settings: {
+        itemsToShow: 1,
         snapAlign: "center",
       },
-    },
-  }),
-  setup() {
-    const products = ref([
-      {
-        image: "img/products/women-1.jpg",
+      // breakpoints are mobile first
+      // any settings not specified will fallback to the carousel settings
+      breakpoints: {
+        1200: {
+          itemsToShow: 3,
+          snapAlign: "start",
+        },
       },
-      {
-        image: "img/products/women-2.jpg",
-      },
-      {
-        image: "img/products/women-3.jpg",
-      },
-      {
-        image: "img/products/women-1.jpg",
-      },
-      {
-        image: "img/products/women-2.jpg",
-      },
-      {
-        image: "img/products/women-3.jpg",
-      },
-    ]);
-
-    return {
-      products,
     };
   },
 };
 </script>
 
 <style scoped>
-.pi-pic {
-  height: 500px;
-}
-.pi-pic img {
-  max-height: 100%;
-  width: auto;
-}
-
-@media only screen and (min-width: 1201px) {
-  .product-item {
-    margin-right: 5px;
+@media only screen and (min-width: 768px) {
+  .product-wrapper .pi-pic img {
+    height: 650px;
   }
 }
 </style>
